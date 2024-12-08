@@ -61,6 +61,7 @@ functions:
     handler: handler.loginAdmin
   register:
     handler: handler.register
+    events:
       - http:
           path: /admin/register
           method: post
