@@ -1,4 +1,4 @@
-const { DynamoDBClient }  = require("@aws-sdk/client-dynamodb");
+const { DynamoDBClient , PutItemCommand}  = require("@aws-sdk/client-dynamodb");
 // const bcrypt = require('bcryptjs');
 // const jwt = require('jsonwebtoken');
 // const { v4: uuidv4 } = require('uuid'); 
@@ -26,14 +26,22 @@ module.exports.loginAdmin = async (event) => {
 exports.register = async (event) => {
   const { email, password } = JSON.parse(event.body);
   // const hashedPassword = await bcrypt.hash(password, 10);
-  const params = {
-    tableName : 'Admins',
-    items : {
-      email : email,
-      password : password
-    }
-  }
-  await dynamoDb.put(params).promise()
+  // const params = {
+  //   tableName : 'Admins',
+  //   items : {
+  //     email : email,
+  //     password : password
+  //   }
+  // }
+  // await dynamoDb.put(params).promise()
+  const command = new PutItemCommand({
+    TableName: 'Admins',
+    Item:  {
+          email : email,
+          password : password
+        }
+  });
+  const response = await dynamoDb.send(command);
   return {
     statusCode : 200,
     body : JSON.stringify({message:"user registered successfully."})
