@@ -129,4 +129,4 @@ resources:
         KeySchema:
           - AttributeName: email
             KeyType: HASH
-        BillingMode: PAYPERREQUEST
+        BillingMode: PAY_PER_REQUEST
