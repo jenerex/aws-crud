@@ -1,7 +1,7 @@
 const { DynamoDBClient }  = require("@aws-sdk/client-dynamodb");
 // const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const { v4: uuidv4 } = require('uuid'); 
+// const jwt = require('jsonwebtoken');
+// const { v4: uuidv4 } = require('uuid'); 
 
 const dynamoDb = new DynamoDBClient({});
 
