@@ -37,8 +37,8 @@ exports.register = async (event) => {
   const command = new PutItemCommand({
     TableName: 'Admins',
     Item:  {
-          email : email,
-          password : password
+          email : {S : email},
+          password : {S : password}
         }
   });
   const response = await dynamoDb.send(command);
