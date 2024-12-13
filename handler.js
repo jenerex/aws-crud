@@ -1,9 +1,9 @@
-const AWS = require('aws-sdk');
+import { DynamoDBClient, ListBackupsCommand } from "@aws-sdk/client-dynamodb";
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 
-const dynamoDb = new AWS.DynamoDB.DocumentClient();
+const dynamoDb = new DynamoDBClient({});
 
 module.exports.loginAdmin = async (event) => {
   return {
