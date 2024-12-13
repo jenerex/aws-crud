@@ -124,9 +124,9 @@ resources:
       Properties:
         TableName: Admins
         AttributeDefinitions:
-          - AttributesName: email
+          - AttributeName: email
             AttributesType: S
         KeySchema:
-          - AttributesName: email
+          - AttributeName: email
             KeyType: HASH
         BillingMode: PAYPERREQUEST
