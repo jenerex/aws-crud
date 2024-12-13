@@ -116,3 +116,17 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+
+resources:
+  Resources:
+    AdminTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Admins
+        AttributeDefinitions:
+          - AttributesName: email
+            AttributesType: S
+        KeySchema:
+          - AttributesName: email
+            KeyType: HASH
+        BillingMode: PAYPERREQUEST

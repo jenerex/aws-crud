@@ -1,4 +1,9 @@
-'use strict';
+const AWS = require('aws-sdk');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const { v4: uuidv4 } = require('uuid');
+
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.loginAdmin = async (event) => {
   return {
@@ -19,8 +24,18 @@ module.exports.loginAdmin = async (event) => {
 };
 
 exports.register = async (event) => {
+  const { email, password } = JSON.parse(event.body);
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const params = {
+    tableName : 'Admins',
+    items : {
+      email : email,
+      password : hashedPassword
+    }
+  }
+  await dynamoDb.put(params).promise()
   return {
     statusCode : 200,
-    body : JSON.stringify({message:"register function has been called"})
+    body : JSON.stringify({message:"user registered successfully."})
   }
 }
