@@ -3,7 +3,7 @@ const { DynamoDBClient , PutItemCommand}  = require("@aws-sdk/client-dynamodb");
 // const jwt = require('jsonwebtoken');
 // const { v4: uuidv4 } = require('uuid'); 
 
-const dynamoDb = new DynamoDBClient({});
+const dynamoDb = new DynamoDBClient({ region: "us-east-1" });
 
 module.exports.loginAdmin = async (event) => {
   return {
