@@ -30,6 +30,7 @@ provider:
     - Effect: "Allow"
       Action:
         - "dynamodb:PutItem"
+      Resource: "arn:aws:dynamodb:us-east-1:885454519783:table/Admins"
 # you can add statements to the Lambda function's IAM Role here
 #  iam:
 #    role:
