@@ -1,5 +1,5 @@
 const { DynamoDBClient }  = require("@aws-sdk/client-dynamodb");
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid'); 
 
@@ -25,12 +25,12 @@ module.exports.loginAdmin = async (event) => {
 
 exports.register = async (event) => {
   const { email, password } = JSON.parse(event.body);
-  const hashedPassword = await bcrypt.hash(password, 10);
+  // const hashedPassword = await bcrypt.hash(password, 10);
   const params = {
     tableName : 'Admins',
     items : {
       email : email,
-      password : hashedPassword
+      password : password
     }
   }
   await dynamoDb.put(params).promise()
