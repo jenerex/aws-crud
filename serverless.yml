@@ -26,6 +26,10 @@ provider:
   region: us-east-1
   environment:
     JWT_SECRET: your_jwt_secret 
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:PutItem"
 # you can add statements to the Lambda function's IAM Role here
 #  iam:
 #    role:
