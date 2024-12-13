@@ -125,7 +125,7 @@ resources:
         TableName: Admins
         AttributeDefinitions:
           - AttributeName: email
-            AttributesType: S
+            AttributeType: S
         KeySchema:
           - AttributeName: email
             KeyType: HASH
