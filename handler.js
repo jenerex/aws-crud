@@ -2,19 +2,44 @@ const { DynamoDBClient , PutItemCommand}  = require("@aws-sdk/client-dynamodb");
 // const bcrypt = require('bcryptjs');
 // const jwt = require('jsonwebtoken');
 // const { v4: uuidv4 } = require('uuid'); 
+require('dotenv').config()
 
-const dynamoDb = new DynamoDBClient({ region: "us-east-1" });
+const {
+  AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY,
+  AWS_REGION,
+  DYNAMODB_ENDPOINT,
+  DYNAMODB_TABLE,
+} = process.env;
 
-module.exports.loginAdmin = async (event) => {
+
+//
+let dynamoDb = {}
+if(process.env.ENV=="Dev"){
+   dynamoDb = new DynamoDBClient({
+    region: "us-east-1",
+    endpoint: "http://localhost:8080",
+    credentials: {
+      accessKeyId: "dummy", // Not actually used
+      secretAccessKey: "dummy" // Not actually used
+    }
+  });
+} else{
+   dynamoDb = new DynamoDBClient({ region: "us-east-1" });
+}
+
+// const dynamoDb = DynamoDBDocumentClient.from(dynamoDBClient);
+
+
+module.exports.login = async (event) => {
+
   return {
     statusCode: 200,
     body: JSON.stringify(
       {
         message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
-      },
-      null,
-      2
+        proccessdata:process.env
+      }
     ),
   };
 
