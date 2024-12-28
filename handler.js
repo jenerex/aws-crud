@@ -1,6 +1,6 @@
 const { DynamoDBClient , PutItemCommand}  = require("@aws-sdk/client-dynamodb");
 // const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 // const { v4: uuidv4 } = require('uuid'); 
 require('dotenv').config()
 
