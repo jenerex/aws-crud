@@ -20,13 +20,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: serverless deploy 
       uses: serverless/github-action@v3.2
-      with:
-        args: deploy
     - run: echo -e "\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ./.npmrc
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
     - run: npm i
 
       env:
