@@ -82,13 +82,13 @@ provider:
 
 functions:
   login:
-    handler: lambda.handler.login
+    handler: lambda/handler.login
     events:
       - http:
           path: /admin/login
           method: post
   register:
-    handler: lambda.handler.register
+    handler: lambda/handler.register
     events:
       - http:
           path: /admin/register
