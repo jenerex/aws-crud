@@ -21,8 +21,8 @@ service: dynamodb-crud
 frameworkVersion: "3"
 
 plugins: 
-  # - serverless-offline
-  # - serverless-dynamodb-local
+  - serverless-offline
+  - serverless-dynamodb-local
 
 
 custom:
