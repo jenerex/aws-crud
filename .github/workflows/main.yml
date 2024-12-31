@@ -27,8 +27,8 @@ jobs:
         # or if using AWS credentials directly
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
-    - name : npm install
-      env:
-        CI: true
-      run : |
-        npm ci
+    - name: Install dependencies
+      run: npm install
+
+    - name: Deploy using Serverless
+      run: serverless deploy
